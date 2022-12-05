@@ -1,0 +1,48 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Ajouter un modèle</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <a href="#" routerLink="/Home" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>
+                &nbsp;Retour</a>
+            </div>
+          </div>
+        </div>
+        <form #ingredientsForms="ngForm">
+          <div class="table-content">
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="Name" class="p-t-b-10">Nom<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="Name" required maxlength="255"
+                  [(ngModel)]="addIngredientsForm.name" name="Name" #Name="ngModel">
+                <div *ngIf="Name.errors && isSubmitted" class="alert alert-danger validationError">
+                    Nom obligatoire !
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="Description" class="p-t-b-10">Description<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="Description" required maxlength="255"
+                  [(ngModel)]="addIngredientsForm.description" name="Description" #Description="ngModel">
+                <div *ngIf="Description.errors && isSubmitted" class="alert alert-danger validationError">
+                    Description obligatoire !
+                </div>
+              </div>
+            </div>
+            </div>
+          <div class="table-footer">
+            <button class="btn btn-success" (click)="AddIngredients(ingredientsForms.form.valid)">Ajouter</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

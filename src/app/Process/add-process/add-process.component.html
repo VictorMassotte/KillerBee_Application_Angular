@@ -1,0 +1,84 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Ajouter un modèle</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <a href="#" routerLink="/Home" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>
+                &nbsp;Retour</a>
+            </div>
+          </div>
+        </div>
+        <form #processForm="ngForm">
+          <div class="table-content">
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="Name" class="p-t-b-10">Nom<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="Name" required maxlength="255"
+                  [(ngModel)]="addProcessForm.name" name="Name" #Name="ngModel">
+                <div *ngIf="Name.errors && isSubmitted" class="alert alert-danger validationError">
+                    Nom obligatoire !
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="Description" class="p-t-b-10">Description<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="Description" required maxlength="255"
+                  [(ngModel)]="addProcessForm.description" name="Description" #Description="ngModel">
+                <div *ngIf="Description.errors && isSubmitted" class="alert alert-danger validationError">
+                    Description obligatoire !
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="Modele" class="p-t-b-10">Modèle Freezbe<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="Modele" required maxlength="255"
+                  [(ngModel)]="addProcessForm.modele" name="Modele" #Modele="ngModel">
+                <div *ngIf="Modele.errors && isSubmitted" class="alert alert-danger validationError">
+                    Modèle obligatoire !
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="Etape" class="p-t-b-10">Etapes<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input class="form-control" class="form-control" id="Etape" required [(ngModel)]="addProcessForm.etape" name="Etape"
+                  #Etape="ngModel">
+                <div *ngIf="Etape.errors && isSubmitted" class="alert alert-danger validationError">
+                    Gamme obligatoire !
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label class="p-t-b-10">Descriptions validations tests<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="Test" required maxlength="10"
+                  [(ngModel)]="addProcessForm.test" name="Test" #Test="ngModel">
+                <div *ngIf="Test.errors && isSubmitted" class="alert alert-danger validationError">
+                    Test obligatoire !
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="table-footer">
+            <button class="btn btn-success" (click)="AddProcess(processForm.form.valid)">Ajouter</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
