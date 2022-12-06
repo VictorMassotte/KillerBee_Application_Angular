@@ -4,7 +4,7 @@
         <div class="table-title">
           <div class="row">
             <div class="col-sm-6">
-              <h4><b>Ajouter un ingrédient</b></h4>
+              <h4><b>Modifier un modèle</b></h4>
             </div>
             <div class="col-sm-6">
               <a href="#" routerLink="/Home" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>
@@ -20,7 +20,7 @@
               </div>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="Name" required maxlength="255"
-                  [(ngModel)]="addIngredientsForm.name" name="Name" #Name="ngModel">
+                  [(ngModel)]="editIngredientsForm.name" name="Name" #Name="ngModel">
                 <div *ngIf="Name.errors && isSubmitted" class="alert alert-danger validationError">
                     Nom obligatoire !
                 </div>
@@ -32,7 +32,7 @@
               </div>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="Description" required maxlength="255"
-                  [(ngModel)]="addIngredientsForm.description" name="Description" #Description="ngModel">
+                  [(ngModel)]="editIngredientsForm.description" name="Description" #Description="ngModel">
                 <div *ngIf="Description.errors && isSubmitted" class="alert alert-danger validationError">
                     Description obligatoire !
                 </div>
@@ -40,7 +40,7 @@
             </div>
             </div>
           <div class="table-footer">
-            <button class="btn btn-success" (click)="AddIngredients(ingredientsForms.form.valid)">Ajouter</button>
+            <button class="btn btn-success" (click)="editIngredients(ingredientsForms.form.valid)">Ajouter</button>
           </div>
         </form>
       </div>

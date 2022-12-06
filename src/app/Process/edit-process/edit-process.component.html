@@ -4,7 +4,7 @@
         <div class="table-title">
           <div class="row">
             <div class="col-sm-6">
-              <h4><b>Ajouter un freezbe</b></h4>
+              <h4><b>Ajouter un modèle</b></h4>
             </div>
             <div class="col-sm-6">
               <a href="#" routerLink="/Home" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>
@@ -12,7 +12,7 @@
             </div>
           </div>
         </div>
-        <form #freezbeForm="ngForm">
+        <form #processFormyy="ngForm">
           <div class="table-content">
             <div class="form-group p-10 row">
               <div class="col-sm-3">
@@ -20,7 +20,7 @@
               </div>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="Name" required maxlength="255"
-                  [(ngModel)]="addFreezbeForm.name" name="Name" #Name="ngModel">
+                  [(ngModel)]="editProcessForm.name" name="Name" #Name="ngModel">
                 <div *ngIf="Name.errors && isSubmitted" class="alert alert-danger validationError">
                     Nom obligatoire !
                 </div>
@@ -32,7 +32,7 @@
               </div>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="Description" required maxlength="255"
-                  [(ngModel)]="addFreezbeForm.description" name="Description" #Description="ngModel">
+                  [(ngModel)]="editProcessForm.description" name="Description" #Description="ngModel">
                 <div *ngIf="Description.errors && isSubmitted" class="alert alert-danger validationError">
                     Description obligatoire !
                 </div>
@@ -40,55 +40,43 @@
             </div>
             <div class="form-group p-10 row">
               <div class="col-sm-3">
-                <label for="PUHT" class="p-t-b-10">pUHT<span class="requiredStar">*</span></label>
+                <label for="Modele" class="p-t-b-10">Modèle Freezbe<span class="requiredStar">*</span></label>
               </div>
               <div class="col-sm-9">
-                <input type="number" class="form-control" id="PUHT" required maxlength="255"
-                  [(ngModel)]="addFreezbeForm.pUHT" name="PUHT" #PUHT="ngModel">
-                <div *ngIf="PUHT.errors && isSubmitted" class="alert alert-danger validationError">
-                    pUHT obligatoire !
+                <input type="text" class="form-control" id="Modele" required maxlength="255"
+                  [(ngModel)]="editProcessForm.modele" name="Modele" #Modele="ngModel">
+                <div *ngIf="Modele.errors && isSubmitted" class="alert alert-danger validationError">
+                    Modèle obligatoire !
                 </div>
               </div>
             </div>
             <div class="form-group p-10 row">
               <div class="col-sm-3">
-                <label for="Gamme" class="p-t-b-10">Gamme<span class="requiredStar">*</span></label>
+                <label for="Etape" class="p-t-b-10">Etapes<span class="requiredStar">*</span></label>
               </div>
               <div class="col-sm-9">
-                <input class="form-control" class="form-control" id="Gamme" required [(ngModel)]="addFreezbeForm.gamme" name="Gamme"
-                  #Gamme="ngModel">
-                <div *ngIf="Gamme.errors && isSubmitted" class="alert alert-danger validationError">
+                <input class="form-control" class="form-control" id="Etape" required [(ngModel)]="editProcessForm.etape" name="Etape"
+                  #Etape="ngModel">
+                <div *ngIf="Etape.errors && isSubmitted" class="alert alert-danger validationError">
                     Gamme obligatoire !
                 </div>
               </div>
             </div>
             <div class="form-group p-10 row">
               <div class="col-sm-3">
-                <label class="p-t-b-10">Ingrédients<span class="requiredStar">*</span></label>
+                <label class="p-t-b-10">Descriptions validations tests<span class="requiredStar">*</span></label>
               </div>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="Ingredients" required maxlength="10"
-                  [(ngModel)]="addFreezbeForm.ingredients" name="Ingredients" #Ingredients="ngModel">
-                <div *ngIf="Ingredients.errors && isSubmitted" class="alert alert-danger validationError">
-                    Ingrédients obligatoire !
+                <input type="text" class="form-control" id="Test" required maxlength="10"
+                  [(ngModel)]="editProcessForm.test" name="Test" #Test="ngModel">
+                <div *ngIf="Test.errors && isSubmitted" class="alert alert-danger validationError">
+                    Test obligatoire !
                 </div>
               </div>
             </div>
-            <div class="form-group p-10 row">
-                <div class="col-sm-3">
-                  <label class="p-t-b-10">Grammage<span class="requiredStar">*</span></label>
-                </div>
-                <div class="col-sm-9">
-                  <input type="number" class="form-control" id="Grammage" required maxlength="10"
-                    [(ngModel)]="addFreezbeForm.grammage" name="Grammage" #Grammage="ngModel">
-                  <div *ngIf="Grammage.errors && isSubmitted" class="alert alert-danger validationError">   
-                        Grammage obligatoire !
-                  </div>
-                </div>
-              </div>
           </div>
           <div class="table-footer">
-            <button class="btn btn-success" (click)="AddFreezbe(freezbeForm.form.valid)">Ajouter</button>
+            <button class="btn btn-success" (click)="editProcess(processForm.form.valid)">Ajouter</button>
           </div>
         </form>
       </div>

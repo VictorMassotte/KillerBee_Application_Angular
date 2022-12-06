@@ -15,6 +15,9 @@ import { HomeViewProcessComponent } from './home/home-view-process/home-view-pro
 import { AddIngredientsComponent } from './Ingredients/add-ingredients/add-ingredients.component';
 import { AddFreezbeComponent } from './Freezbe/add-freezbe/add-freezbe.component';
 import { AddProcessComponent } from './Process/add-process/add-process.component';
+import { EditProcessComponent } from './Process/edit-process/edit-process.component';
+import { EditIngredientsComponent } from './Ingredients/edit-ingredients/edit-ingredients.component';
+import { EditFreezbeComponent } from './Freezbe/edit-freezbe/edit-freezbe.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { AddProcessComponent } from './Process/add-process/add-process.component
     HomeViewProcessComponent,
     AddIngredientsComponent,
     AddFreezbeComponent,
-    AddProcessComponent
+    AddProcessComponent,
+    EditProcessComponent,
+    EditIngredientsComponent,
+    EditFreezbeComponent
   ],
   imports: [
     BrowserModule,
