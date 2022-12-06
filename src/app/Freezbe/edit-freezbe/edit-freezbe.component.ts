@@ -16,29 +16,31 @@ export class EditFreezbeComponent {
   freezbeForm!: NgForm;
 
   isSubmitted: boolean = false;
-  freezbeId: any;
+  id: any;
 
   constructor(private toastr: ToastrService, private route: ActivatedRoute, private router: Router,
     private httpProvider: HttpProviderService) { }
 
   ngOnInit(): void {
-    this.freezbeId = this.route.snapshot.params['freezbeId'];
+    this.id = this.route.snapshot.params['id'];
     this.getFreezbeById();
   }
 
   getFreezbeById() {
-    this.httpProvider.getFreezbeById(this.freezbeId).subscribe((data: any) => {
+    this.httpProvider.getFreezbeById(this.id).subscribe((data: any) => {
       if (data != null && data.body != null) {
         var resultData = data.body;
-        if (resultData) {
-          this.editFreezbeForm.Id = resultData.id;
-          this.editFreezbeForm.name = resultData.name;
-          this.editFreezbeForm.description = resultData.description;
-          this.editFreezbeForm.pUHT = resultData.pUHT;
-          this.editFreezbeForm.gamme = resultData.gamme;
-          this.editFreezbeForm.grammage = resultData.grammage;
 
+        for(let i = 0; i < resultData.length; i++){
+          this.editFreezbeForm.Id = resultData[i].id;
+          this.editFreezbeForm.name = resultData[i].name;
+          this.editFreezbeForm.description = resultData[i].description;
+          this.editFreezbeForm.pUHT = resultData[i].pUHT;
+          this.editFreezbeForm.gamme = resultData[i].gamme;
+          this.editFreezbeForm.grammage = resultData[i].grammage;
+          this.editFreezbeForm.ingredients = resultData[i].ingredients;
         }
+        
       }
     },
       (error: any) => { });
@@ -47,12 +49,15 @@ export class EditFreezbeComponent {
   editFreezbe(isValid: any) {
     this.isSubmitted = true;
     if (isValid) {
-      this.httpProvider.saveProcess(this.editFreezbe).subscribe(async data => {
+
+      const dataJson = JSON.stringify(this.editFreezbeForm) 
+      console.log(dataJson);
+      this.httpProvider.updateFreezbeId(this.id, dataJson).subscribe(async data => {
         if (data != null && data.body != null) {
           var resultData = data.body;
-          if (resultData != null && resultData.isSuccess) {
-            if (resultData != null && resultData.isSuccess) {
-              this.toastr.success(resultData.message);
+          if (resultData.rowsAffected >= 1) {
+            if (resultData.rowsAffected >= 1) {
+              this.toastr.success("Freezbe modifié avec succès !");
               setTimeout(() => {
                 this.router.navigate(['/Home']);
               }, 500);

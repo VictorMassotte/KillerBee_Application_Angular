@@ -52,13 +52,13 @@
             </div>
             <div class="form-group p-10 row">
               <div class="col-sm-3">
-                <label for="Etape" class="p-t-b-10">Etapes<span class="requiredStar">*</span></label>
+                <label for="Etapes" class="p-t-b-10">Etapes<span class="requiredStar">*</span></label>
               </div>
               <div class="col-sm-9">
-                <input class="form-control" class="form-control" id="Etape" required [(ngModel)]="addProcessForm.etape" name="Etape"
-                  #Etape="ngModel">
-                <div *ngIf="Etape.errors && isSubmitted" class="alert alert-danger validationError">
-                    Gamme obligatoire !
+                <input class="form-control" class="form-control" id="Etapes" required [(ngModel)]="addProcessForm.etapes" name="Etapes"
+                  #Etapes="ngModel">
+                <div *ngIf="Etapes.errors && isSubmitted" class="alert alert-danger validationError">
+                    Etapes obligatoire !
                 </div>
               </div>
             </div>

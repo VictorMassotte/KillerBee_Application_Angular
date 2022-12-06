@@ -26,16 +26,11 @@ export class AddIngredientsComponent {
     this.isSubmitted = true;
     if (isValid) {
       this.httpProvider.saveIngredients(this.addIngredientsForm).subscribe(async data => {
-        if (data != null && data.body != null) {
-          if (data != null && data.body != null) {
-            var resultData = data.body;
-            if (resultData != null && resultData.isSuccess) {
-              this.toastr.success(resultData.message);
-              setTimeout(() => {
-                this.router.navigate(['/Home']);
-              }, 500);
-            }
-          }
+        if (data != null) {
+          this.toastr.success("Ingrédient ajouté avec succès !");
+          setTimeout(() => {
+            this.router.navigate(['/Home']);
+          }, 500);
         }
       },
         async error => {

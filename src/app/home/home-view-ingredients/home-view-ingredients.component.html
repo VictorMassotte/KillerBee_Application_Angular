@@ -23,10 +23,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let ingredients of ingredientsList" class="center-align">
-              <td>{{ ingredients.firstName }}</td>
-              <td>{{ ingredients.lastName }}</td>
+              <td>{{ ingredients.name }}</td>
+              <td>{{ ingredients.description }}</td>
               <td>
-                <a href="#" [routerLink]="['/ViewEmployee/', ingredients.id]" class="btn"><i class='fas fa-eye view'></i></a>
                 <a href="#" [routerLink]="['/EditIngredients/', ingredients.id]" class="btn"><i class="fa fa-edit edit"></i></a>
                 <button type="button" (click)="deleteIngregredientsConfirmation(ingredients)" class="btn"><i class='fas fa-trash-alt delete'></i></button>
               </td>

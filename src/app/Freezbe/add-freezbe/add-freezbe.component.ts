@@ -26,16 +26,12 @@ export class AddFreezbeComponent {
     this.isSubmitted = true;
     if (isValid) {
       this.httpProvider.saveFreezbe(this.addFreezbeForm).subscribe(async data => {
-        if (data != null && data.body != null) {
-          if (data != null && data.body != null) {
-            var resultData = data.body;
-            if (resultData != null && resultData.isSuccess) {
-              this.toastr.success(resultData.message);
-              setTimeout(() => {
-                this.router.navigate(['/Home']);
-              }, 500);
-            }
-          }
+        console.log(data);
+        if (data != null) {
+          this.toastr.success("Freezbe ajouté avec succès !");
+          setTimeout(() => {
+            this.router.navigate(['/Home']);
+          }, 500);
         }
       },
         async error => {

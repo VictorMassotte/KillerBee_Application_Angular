@@ -8,16 +8,16 @@ import { HttpProviderService } from '../../Service/http-provider.service';
   selector: 'ng-modal-confirm',
   template: `
   <div class="modal-header">
-    <h5 class="modal-title" id="modal-title">Delete Confirmation</h5>
+    <h5 class="modal-title" id="modal-title">Confirmation de la suppression</h5>
     <button type="button" class="btn close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <p>Are you sure you want to delete?</p>
+    <p>Vous êtes sûr de vouloir supprimer ?</p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">CANCEL</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Annuler</button>
     <button type="button" ngbAutofocus class="btn btn-success" (click)="modal.close('Ok click')">OK</button>
   </div>
   `,
@@ -81,16 +81,15 @@ export class HomeViewIngredientsComponent {
   }
 
   deleteIngredients(ingredients: any) {
-    this.httpProvider.deleteProcessById(ingredients.id).subscribe((data : any) => {
-      if (data != null && data.body != null) {
-        var resultData = data.body;
-        if (resultData != null && resultData.isSuccess) {
-          this.toastr.success(resultData.message);
+    this.httpProvider.deleteIngredientsById(ingredients.id).subscribe((data : any) => {
+        if (data.rowsAffected >= 1) {
+          this.toastr.success("Ingrédient supprimé avec succès !");
           this.getAllIngredients();
-        }
       }
     },
-    (error : any) => {});
+    (error : any) => {
+      this.toastr.error(error.message);
+    });
   }
 }
 

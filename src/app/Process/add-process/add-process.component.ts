@@ -26,16 +26,11 @@ export class AddProcessComponent {
     this.isSubmitted = true;
     if (isValid) {
       this.httpProvider.saveProcess(this.addProcessForm).subscribe(async data => {
-        if (data != null && data.body != null) {
-          if (data != null && data.body != null) {
-            var resultData = data.body;
-            if (resultData != null && resultData.isSuccess) {
-              this.toastr.success(resultData.message);
-              setTimeout(() => {
-                this.router.navigate(['/Home']);
-              }, 500);
-            }
-          }
+        if (data != null) {
+          this.toastr.success("Process ajouté avec succès !");
+          setTimeout(() => {
+            this.router.navigate(['/Home']);
+          }, 500);
         }
       },
         async error => {
@@ -53,7 +48,7 @@ export class processForm {
   name: string = "";
   description: string = "";
   modele: string = "";
-  etape: string = "";
+  etapes: string = "";
   test: string = "";
 
 }

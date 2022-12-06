@@ -27,16 +27,15 @@
           </thead>
           <tbody>
             <tr *ngFor="let freezbe of freezbeList" class="center-align">
-              <td>{{ freezbe.firstName }}</td>
-              <td>{{ freezbe.lastName }}</td>
-              <td>{{ freezbe.email }}</td>
-              <td>{{ freezbe.address }}</td>
-              <td>{{ freezbe.phone }}</td>
-              <td>{{ freezbe.phone }}</td>
+              <td>{{ freezbe.name }}</td>
+              <td>{{ freezbe.description }}</td>
+              <td>{{ freezbe.pUHT }}</td>
+              <td>{{ freezbe.gamme }}</td>
+              <td>{{ freezbe.ingredients }}</td>
+              <td>{{ freezbe.grammage }}</td>
               <td>
-                <a href="#" [routerLink]="['/ViewEmployee/', freezbe.id]" class="btn"><i class='fas fa-eye view'></i></a>
                 <a href="#" [routerLink]="['/EditFreezbe/', freezbe.id]" class="btn"><i class="fa fa-edit edit"></i></a>
-                <button type="button" (click)="deleteFreezbeConfoirmation(freezbe)" class="btn"><i class='fas fa-trash-alt delete'></i></button>
+                <button type="button" (click)="deleteFreezbeConfirmation(freezbe)" class="btn"><i class='fas fa-trash-alt delete'></i></button>
               </td>
             </tr>
             <tr>

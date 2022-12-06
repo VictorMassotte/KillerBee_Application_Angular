@@ -17,27 +17,27 @@ export class EditProcessComponent {
   processForm!: NgForm;
 
   isSubmitted: boolean = false;
-  processId: any;
+  id: any;
 
   constructor(private toastr: ToastrService, private route: ActivatedRoute, private router: Router,
     private httpProvider: HttpProviderService) { }
 
   ngOnInit(): void {
-    this.processId = this.route.snapshot.params['processId'];
+    this.id = this.route.snapshot.params['id'];
     this.getProcessById();
   }
 
   getProcessById() {
-    this.httpProvider.getProcessById(this.processId).subscribe((data: any) => {
+    this.httpProvider.getProcessById(this.id).subscribe((data: any) => {
       if (data != null && data.body != null) {
         var resultData = data.body;
-        if (resultData) {
-          this.editProcessForm.Id = resultData.id;
-          this.editProcessForm.name = resultData.name;
-          this.editProcessForm.description = resultData.description;
-          this.editProcessForm.modele = resultData.modele;
-          this.editProcessForm.etape = resultData.etape;
-          this.editProcessForm.test = resultData.test;
+        for(let i = 0; i < resultData.length; i++){
+          this.editProcessForm.Id = resultData[i].id;
+          this.editProcessForm.name = resultData[i].name;
+          this.editProcessForm.description = resultData[i].description;
+          this.editProcessForm.modele = resultData[i].modele;
+          this.editProcessForm.etapes = resultData[i].etapes;
+          this.editProcessForm.test = resultData[i].test;
         }
       }
     },
@@ -47,12 +47,14 @@ export class EditProcessComponent {
   editProcess(isValid: any) {
     this.isSubmitted = true;
     if (isValid) {
-      this.httpProvider.saveProcess(this.editProcessForm).subscribe(async data => {
+      const dataJson = JSON.stringify(this.editProcessForm) 
+
+      this.httpProvider.updateProcessById(this.id, dataJson).subscribe(async data => {
         if (data != null && data.body != null) {
           var resultData = data.body;
-          if (resultData != null && resultData.isSuccess) {
-            if (resultData != null && resultData.isSuccess) {
-              this.toastr.success(resultData.message);
+          if (resultData.rowsAffected >= 1) {
+            if (resultData.rowsAffected >= 1) {
+              this.toastr.success("Processus modifié avec succès !");
               setTimeout(() => {
                 this.router.navigate(['/Home']);
               }, 500);
@@ -75,6 +77,6 @@ export class processForm {
   name: string = "";
   description: string = "";
   modele: string = "";
-  etape: string = "";
+  etapes: string = "";
   test: string = "";
 }

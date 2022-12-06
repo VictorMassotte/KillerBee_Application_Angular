@@ -17,24 +17,25 @@ export class EditIngredientsComponent {
   ingredientsForm!: NgForm;
 
   isSubmitted: boolean = false;
-  ingredientsId: any;
+  id: any;
 
   constructor(private toastr: ToastrService, private route: ActivatedRoute, private router: Router,
     private httpProvider: HttpProviderService) { }
 
   ngOnInit(): void {
-    this.ingredientsId = this.route.snapshot.params['ingredientsId'];
+    this.id = this.route.snapshot.params['id'];
     this.getIngredientsById();
   }
 
   getIngredientsById() {
-    this.httpProvider.getIngredientsById(this.ingredientsId).subscribe((data: any) => {
+    this.httpProvider.getIngredientsById(this.id).subscribe((data: any) => {
       if (data != null && data.body != null) {
         var resultData = data.body;
-        if (resultData) {
-          this.editIngredientsForm.Id = resultData.id;
-          this.editIngredientsForm.name = resultData.name;
-          this.editIngredientsForm.description = resultData.description;
+
+        for(let i = 0; i < resultData.length; i++){
+          this.editIngredientsForm.Id = resultData[i].id;
+          this.editIngredientsForm.name = resultData[i].name;
+          this.editIngredientsForm.description = resultData[i].description;
         }
       }
     },
@@ -44,12 +45,14 @@ export class EditIngredientsComponent {
   editIngredients(isValid: any) {
     this.isSubmitted = true;
     if (isValid) {
-      this.httpProvider.saveProcess(this.editIngredients).subscribe(async data => {
+      const dataJson = JSON.stringify(this.editIngredientsForm) 
+      
+      this.httpProvider.updateIngredientsById(this.id, dataJson).subscribe(async data => {
         if (data != null && data.body != null) {
           var resultData = data.body;
-          if (resultData != null && resultData.isSuccess) {
-            if (resultData != null && resultData.isSuccess) {
-              this.toastr.success(resultData.message);
+          if (resultData.rowsAffected >= 1) {
+            if (resultData.rowsAffected >= 1) {
+              this.toastr.success("Ingrédient modifié avec succès !");
               setTimeout(() => {
                 this.router.navigate(['/Home']);
               }, 500);

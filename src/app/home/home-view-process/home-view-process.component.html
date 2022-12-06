@@ -26,13 +26,12 @@
           </thead>
           <tbody>
             <tr *ngFor="let process of processList" class="center-align">
-              <td>{{ process.firstName }}</td>
-              <td>{{ process.lastName }}</td>
-              <td>{{ process.email }}</td>
-              <td>{{ process.address }}</td>
-              <td>{{ process.phone }}</td>
+              <td>{{ process.name }}</td>
+              <td>{{ process.description }}</td>
+              <td>{{ process.modele }}</td>
+              <td>{{ process.etapes }}</td>
+              <td>{{ process.test }}</td>
               <td>
-                <a href="#" [routerLink]="['/ViewProcess/', process.id]" class="btn"><i class='fas fa-eye view'></i></a>
                 <a href="#" [routerLink]="['/EditProcess/', process.id]" class="btn"><i class="fa fa-edit edit"></i></a>
                 <button type="button" (click)="deleteProcessConfirmation(process)" class="btn"><i class='fas fa-trash-alt delete'></i></button>
               </td>

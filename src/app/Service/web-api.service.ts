@@ -47,11 +47,45 @@ export class WebApiService {
       }),
       observe: "response" as 'body'
     };
-
     return this.httpClient.post(
       url,
       model,
+      { responseType: 'text' })
+      .pipe(
+        map((response: any) => this.ReturnResponseData(response)),
+        catchError(this.handleError)
+      );
+  }
+
+  // Put call method
+  // Param 1 : authToken
+  // Param 2 : url
+  // Param 3 : model
+  put(url: string, model: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      observe: "response" as 'body'
+    };
+
+    return this.httpClient.put(
+      url,
+      model,
       httpOptions)
+      .pipe(
+        map((response: any) => this.ReturnResponseData(response)),
+        catchError(this.handleError)
+      );
+  }
+
+    // Put call method
+  // Param 1 : authToken
+  // Param 2 : url
+  // Param 3 : model
+  delete(url: string): Observable<any> {
+    return this.httpClient.delete(
+      url)
       .pipe(
         map((response: any) => this.ReturnResponseData(response)),
         catchError(this.handleError)
