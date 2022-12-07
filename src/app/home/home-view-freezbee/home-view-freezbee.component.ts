@@ -47,7 +47,7 @@ export class HomeViewFreezbeeComponent {
   }
 
   async getAllFreezbe() {
-    this.httpProvider.getAllFreezbe().subscribe((data : any) => {
+    this.httpProvider.getAllFreezbe(localStorage.getItem('access_token')).subscribe((data : any) => {
       if (data != null && data.body != null) {
         var resultData = data.body;
         if (resultData) {
@@ -81,7 +81,7 @@ export class HomeViewFreezbeeComponent {
   }
 
   deleteFreezbe(freezbe: any) {
-    this.httpProvider.deleteFreezbeById(freezbe.id).subscribe((data : any) => {
+    this.httpProvider.deleteFreezbeById(freezbe.id, localStorage.getItem('access_token')).subscribe((data : any) => {
       if (data.rowsAffected >= 1) {
           this.toastr.success("Freezbe supprimé avec succès ! ");
           this.getAllFreezbe();

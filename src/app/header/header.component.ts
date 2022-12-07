@@ -13,4 +13,11 @@ export class HeaderComponent {
     this.router.navigate(['home']);
   }
 
+  nameUser = localStorage.getItem('userName');
+
+  SignOutClick(){
+    localStorage.clear();
+    this.router.navigate(['']);
+  };
+
 }

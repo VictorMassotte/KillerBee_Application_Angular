@@ -46,7 +46,7 @@ export class HomeViewProcessComponent {
   }
 
   async getAllProcess() {
-    this.httpProvider.getAllProcess().subscribe((data : any) => {
+    this.httpProvider.getAllProcess(localStorage.getItem('access_token')).subscribe((data : any) => {
       if (data != null && data.body != null) {
         var resultData = data.body;
         if (resultData) {
@@ -80,7 +80,7 @@ export class HomeViewProcessComponent {
   }
 
   deleteProcess(process: any) {
-    this.httpProvider.deleteProcessById(process.id).subscribe((data : any) => {
+    this.httpProvider.deleteProcessById(process.id, localStorage.getItem('access_token')).subscribe((data : any) => {
         if (data.rowsAffected >= 1) {
           this.toastr.success("Processus supprimé avec succès !");
           this.getAllProcess();

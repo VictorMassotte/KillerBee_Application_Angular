@@ -25,7 +25,7 @@ export class AddIngredientsComponent {
   AddIngredients(isValid: any) {
     this.isSubmitted = true;
     if (isValid) {
-      this.httpProvider.saveIngredients(this.addIngredientsForm).subscribe(async data => {
+      this.httpProvider.saveIngredients(this.addIngredientsForm, localStorage.getItem('access_token')).subscribe(async data => {
         if (data != null) {
           this.toastr.success("Ingrédient ajouté avec succès !");
           setTimeout(() => {

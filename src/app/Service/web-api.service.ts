@@ -16,12 +16,13 @@ export class WebApiService {
   // Get call method
   // Param 1 : authToken
   // Param 2 : url
-  get(url: string): Observable<any> {
+  get(url: string, auth_token: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Cache-Control' : 'no-cache',
-        'Pragma' : 'no-cache'
+        'Pragma' : 'no-cache',
+        'Authorization': `Bearer ${auth_token}`
       }),
       observe: "response" as 'body'
     };
@@ -40,7 +41,29 @@ export class WebApiService {
   // Param 1 : authToken
   // Param 2 : url
   // Param 3 : model
-  post(url: string, model: any): Observable<any> {
+  post(url: string, model: any, auth_token: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth_token}`
+      }),
+      observe: "response" as 'body'
+    };
+    return this.httpClient.post(
+      url,
+      model,
+      { responseType: 'text' })
+      .pipe(
+        map((response: any) => this.ReturnResponseData(response)),
+        catchError(this.handleError)
+      );
+  }
+
+    // Post call method
+  // Param 1 : authToken
+  // Param 2 : url
+  // Param 3 : model
+  postAuth(url: string, model: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -61,10 +84,11 @@ export class WebApiService {
   // Param 1 : authToken
   // Param 2 : url
   // Param 3 : model
-  put(url: string, model: any): Observable<any> {
+  put(url: string, model: any, auth_token: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth_token}`
       }),
       observe: "response" as 'body'
     };
@@ -83,9 +107,16 @@ export class WebApiService {
   // Param 1 : authToken
   // Param 2 : url
   // Param 3 : model
-  delete(url: string): Observable<any> {
+  delete(url: string, auth_token: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${auth_token}`
+      }),
+      observe: "response" as 'body'
+    };
     return this.httpClient.delete(
-      url)
+      url,
+      httpOptions)
       .pipe(
         map((response: any) => this.ReturnResponseData(response)),
         catchError(this.handleError)

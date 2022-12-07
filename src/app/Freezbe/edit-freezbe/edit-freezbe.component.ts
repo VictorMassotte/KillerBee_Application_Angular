@@ -27,7 +27,7 @@ export class EditFreezbeComponent {
   }
 
   getFreezbeById() {
-    this.httpProvider.getFreezbeById(this.id).subscribe((data: any) => {
+    this.httpProvider.getFreezbeById(this.id, localStorage.getItem('access_token')).subscribe((data: any) => {
       if (data != null && data.body != null) {
         var resultData = data.body;
 
@@ -49,17 +49,16 @@ export class EditFreezbeComponent {
   editFreezbe(isValid: any) {
     this.isSubmitted = true;
     if (isValid) {
-
       const dataJson = JSON.stringify(this.editFreezbeForm) 
-      console.log(dataJson);
-      this.httpProvider.updateFreezbeId(this.id, dataJson).subscribe(async data => {
+      
+      this.httpProvider.updateFreezbeId(this.id, dataJson,localStorage.getItem('access_token')).subscribe(async data => {
         if (data != null && data.body != null) {
           var resultData = data.body;
           if (resultData.rowsAffected >= 1) {
             if (resultData.rowsAffected >= 1) {
               this.toastr.success("Freezbe modifié avec succès !");
               setTimeout(() => {
-                this.router.navigate(['/home']);
+                this.router.navigate(['/Home']);
               }, 500);
             }
           }
@@ -68,7 +67,7 @@ export class EditFreezbeComponent {
         async error => {
           this.toastr.error(error.message);
           setTimeout(() => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/Home']);
           }, 500);
         });
     }

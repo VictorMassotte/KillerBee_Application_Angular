@@ -25,7 +25,7 @@ export class AddFreezbeComponent {
   AddFreezbe(isValid: any) {
     this.isSubmitted = true;
     if (isValid) {
-      this.httpProvider.saveFreezbe(this.addFreezbeForm).subscribe(async data => {
+      this.httpProvider.saveFreezbe(this.addFreezbeForm, localStorage.getItem('access_token')).subscribe(async data => {
         console.log(data);
         if (data != null) {
           this.toastr.success("Freezbe ajouté avec succès !");

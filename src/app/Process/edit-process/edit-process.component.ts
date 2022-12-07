@@ -28,7 +28,7 @@ export class EditProcessComponent {
   }
 
   getProcessById() {
-    this.httpProvider.getProcessById(this.id).subscribe((data: any) => {
+    this.httpProvider.getProcessById(this.id, localStorage.getItem('access_token')).subscribe((data: any) => {
       if (data != null && data.body != null) {
         var resultData = data.body;
         for(let i = 0; i < resultData.length; i++){
@@ -49,7 +49,7 @@ export class EditProcessComponent {
     if (isValid) {
       const dataJson = JSON.stringify(this.editProcessForm) 
 
-      this.httpProvider.updateProcessById(this.id, dataJson).subscribe(async data => {
+      this.httpProvider.updateProcessById(this.id, dataJson, localStorage.getItem('access_token')).subscribe(async data => {
         if (data != null && data.body != null) {
           var resultData = data.body;
           if (resultData.rowsAffected >= 1) {

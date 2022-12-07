@@ -8,18 +8,19 @@ import { EditIngredientsComponent } from './Ingredients/edit-ingredients/edit-in
 import { LoginComponent } from './login/login.component';
 import { AddProcessComponent } from './Process/add-process/add-process.component';
 import { EditProcessComponent } from './Process/edit-process/edit-process.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   
-  { path: 'AddFreezbe', component: AddFreezbeComponent },
-  { path: 'AddIngredients', component: AddIngredientsComponent},
-  { path: "AddProcess", component: AddProcessComponent},
+  { path: 'AddFreezbe', component: AddFreezbeComponent, canActivate:[AuthGuard] },
+  { path: 'AddIngredients', component: AddIngredientsComponent, canActivate:[AuthGuard]},
+  { path: "AddProcess", component: AddProcessComponent, canActivate:[AuthGuard]},
   
-  { path: 'EditFreezbe/:id', component: EditFreezbeComponent },
-  { path: 'EditIngredients/:id', component: EditIngredientsComponent},
-  { path: "EditProcess/:id", component: EditProcessComponent},
+  { path: 'EditFreezbe/:id', component: EditFreezbeComponent, canActivate:[AuthGuard] },
+  { path: 'EditIngredients/:id', component: EditIngredientsComponent,canActivate:[AuthGuard]},
+  { path: "EditProcess/:id", component: EditProcessComponent, canActivate:[AuthGuard]},
 
   { path: 'login', component: LoginComponent}
 

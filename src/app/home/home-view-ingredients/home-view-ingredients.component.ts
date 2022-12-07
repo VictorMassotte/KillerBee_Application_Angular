@@ -47,7 +47,7 @@ export class HomeViewIngredientsComponent {
   }
 
   async getAllIngredients() {
-    this.httpProvider.getAllIngredients().subscribe((data : any) => {
+    this.httpProvider.getAllIngredients(localStorage.getItem('access_token')).subscribe((data : any) => {
       if (data != null && data.body != null) {
         var resultData = data.body;
         if (resultData) {
@@ -81,7 +81,7 @@ export class HomeViewIngredientsComponent {
   }
 
   deleteIngredients(ingredients: any) {
-    this.httpProvider.deleteIngredientsById(ingredients.id).subscribe((data : any) => {
+    this.httpProvider.deleteIngredientsById(ingredients.id, localStorage.getItem('access_token')).subscribe((data : any) => {
         if (data.rowsAffected >= 1) {
           this.toastr.success("Ingrédient supprimé avec succès !");
           this.getAllIngredients();

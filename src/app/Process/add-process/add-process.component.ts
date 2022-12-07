@@ -25,7 +25,7 @@ export class AddProcessComponent {
   AddProcess(isValid: any) {
     this.isSubmitted = true;
     if (isValid) {
-      this.httpProvider.saveProcess(this.addProcessForm).subscribe(async data => {
+      this.httpProvider.saveProcess(this.addProcessForm, localStorage.getItem('access_token')).subscribe(async data => {
         if (data != null) {
           this.toastr.success("Process ajouté avec succès !");
           setTimeout(() => {

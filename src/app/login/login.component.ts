@@ -25,8 +25,14 @@ export class LoginComponent{
   login(isValid: any) {
     this.isSubmitted = true;
     if (isValid) {
-      this.httpProvider.saveIngredients(this.coLoginForm).subscribe(async data => {
+      this.httpProvider.login(this.coLoginForm).subscribe(async data => {
         if (data != null) {
+          const dataJson = JSON.parse(data);
+
+          localStorage.setItem('userName', dataJson.user);
+          localStorage.setItem('access_token', dataJson.access_token);
+          localStorage.setItem('refresh_token', dataJson.refresh_token);
+
           this.toastr.success("Bienvenue !");
           setTimeout(() => {
             this.router.navigate(['/home']);
@@ -34,6 +40,8 @@ export class LoginComponent{
         }
       },
         async error => {
+          console.log(error);
+
           this.toastr.error("Mauvais identifiants ou mot de passe !");
           setTimeout(() => {
             this.router.navigate(['/']);

@@ -22,15 +22,23 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: large;
     }
+    .username{
+      padding-right: 10px;
+    }
   </style>
   
   <nav class="navbar fixed-top navbar-expand-md navbar-light white double-nav scrolling-navbar">
       <div class="toolbar" role="banner">
       <div class="col-sm-6">
         <h4><i class='fas fa-home' (click)="HomeClick()"></i></h4>
+        
       </div>
       <div class="col-sm-6">
-        <span class="employee"><b><i class='fas fa-user'></i> name </b></span>
+        <span class="employee"><b class="username"><i class='fas fa-user'></i> {{ nameUser }} </b><button class="btn btn-info" (click)="SignOutClick()">
+          <span> Déconnecter</span>
+        </button></span>
+
       </div>
+      
     </div>
   </nav>

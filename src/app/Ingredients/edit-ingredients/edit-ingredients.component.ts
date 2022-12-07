@@ -28,7 +28,7 @@ export class EditIngredientsComponent {
   }
 
   getIngredientsById() {
-    this.httpProvider.getIngredientsById(this.id).subscribe((data: any) => {
+    this.httpProvider.getIngredientsById(this.id, localStorage.getItem('access_token')).subscribe((data: any) => {
       if (data != null && data.body != null) {
         var resultData = data.body;
 
@@ -47,7 +47,7 @@ export class EditIngredientsComponent {
     if (isValid) {
       const dataJson = JSON.stringify(this.editIngredientsForm) 
       
-      this.httpProvider.updateIngredientsById(this.id, dataJson).subscribe(async data => {
+      this.httpProvider.updateIngredientsById(this.id, dataJson, localStorage.getItem('access_token')).subscribe(async data => {
         if (data != null && data.body != null) {
           var resultData = data.body;
           if (resultData.rowsAffected >= 1) {
