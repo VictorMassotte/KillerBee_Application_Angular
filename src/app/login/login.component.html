@@ -1,0 +1,44 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Bienvenue</b></h4>
+            </div>
+          </div>
+        </div>
+        <form #loginForm="ngForm">
+          <div class="table-content">
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="Name" class="p-t-b-10">Email<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" id="email" required maxlength="255"
+                  [(ngModel)]="coLoginForm.email" name="email" #email="ngModel">
+                <div *ngIf="email.errors && isSubmitted" class="alert alert-danger validationError">
+                    Email obligatoire !
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="Description" class="p-t-b-10">Mots de passe<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" id="password" required maxlength="255"
+                  [(ngModel)]="coLoginForm.password" name="Descripasswordption" #password="ngModel">
+                <div *ngIf="password.errors && isSubmitted" class="alert alert-danger validationError">
+                    Mots de passe obligatoire !
+                </div>
+              </div>
+            </div>
+            </div>
+          <div class="table-footer">
+            <button class="btn btn-success" (click)="login(loginForm.form.valid)">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -18,6 +18,8 @@ import { AddProcessComponent } from './Process/add-process/add-process.component
 import { EditProcessComponent } from './Process/edit-process/edit-process.component';
 import { EditIngredientsComponent } from './Ingredients/edit-ingredients/edit-ingredients.component';
 import { EditFreezbeComponent } from './Freezbe/edit-freezbe/edit-freezbe.component';
+import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,10 @@ import { EditFreezbeComponent } from './Freezbe/edit-freezbe/edit-freezbe.compon
     AddProcessComponent,
     EditProcessComponent,
     EditIngredientsComponent,
-    EditFreezbeComponent
+    EditFreezbeComponent,
+    LoginComponent,
+    HeaderComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,7 @@ import { EditFreezbeComponent } from './Freezbe/edit-freezbe/edit-freezbe.compon
     FormsModule,
     NgbModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

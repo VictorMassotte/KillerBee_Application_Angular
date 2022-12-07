@@ -29,14 +29,14 @@ export class AddIngredientsComponent {
         if (data != null) {
           this.toastr.success("Ingrédient ajouté avec succès !");
           setTimeout(() => {
-            this.router.navigate(['/Home']);
+            this.router.navigate(['/home']);
           }, 500);
         }
       },
         async error => {
           this.toastr.error(error.message);
           setTimeout(() => {
-            this.router.navigate(['/Home']);
+            this.router.navigate(['/home']);
           }, 500);
         });
     }

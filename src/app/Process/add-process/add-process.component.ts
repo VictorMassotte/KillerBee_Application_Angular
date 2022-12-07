@@ -29,14 +29,14 @@ export class AddProcessComponent {
         if (data != null) {
           this.toastr.success("Process ajouté avec succès !");
           setTimeout(() => {
-            this.router.navigate(['/Home']);
+            this.router.navigate(['/home']);
           }, 500);
         }
       },
         async error => {
           this.toastr.error(error.message);
           setTimeout(() => {
-            this.router.navigate(['/Home']);
+            this.router.navigate(['/home']);
           }, 500);
         });
     }

@@ -56,7 +56,7 @@ export class EditProcessComponent {
             if (resultData.rowsAffected >= 1) {
               this.toastr.success("Processus modifié avec succès !");
               setTimeout(() => {
-                this.router.navigate(['/Home']);
+                this.router.navigate(['/home']);
               }, 500);
             }
           }
@@ -65,7 +65,7 @@ export class EditProcessComponent {
         async error => {
           this.toastr.error(error.message);
           setTimeout(() => {
-            this.router.navigate(['/Home']);
+            this.router.navigate(['/home']);
           }, 500);
         });
     }

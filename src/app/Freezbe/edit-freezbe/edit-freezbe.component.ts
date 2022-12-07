@@ -59,7 +59,7 @@ export class EditFreezbeComponent {
             if (resultData.rowsAffected >= 1) {
               this.toastr.success("Freezbe modifié avec succès !");
               setTimeout(() => {
-                this.router.navigate(['/Home']);
+                this.router.navigate(['/home']);
               }, 500);
             }
           }
@@ -68,7 +68,7 @@ export class EditFreezbeComponent {
         async error => {
           this.toastr.error(error.message);
           setTimeout(() => {
-            this.router.navigate(['/Home']);
+            this.router.navigate(['/home']);
           }, 500);
         });
     }

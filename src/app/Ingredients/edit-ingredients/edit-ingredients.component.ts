@@ -54,7 +54,7 @@ export class EditIngredientsComponent {
             if (resultData.rowsAffected >= 1) {
               this.toastr.success("Ingrédient modifié avec succès !");
               setTimeout(() => {
-                this.router.navigate(['/Home']);
+                this.router.navigate(['/home']);
               }, 500);
             }
           }
@@ -63,7 +63,7 @@ export class EditIngredientsComponent {
         async error => {
           this.toastr.error(error.message);
           setTimeout(() => {
-            this.router.navigate(['/Home']);
+            this.router.navigate(['/home']);
           }, 500);
         });
     }

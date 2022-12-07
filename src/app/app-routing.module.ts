@@ -5,12 +5,13 @@ import { EditFreezbeComponent } from './Freezbe/edit-freezbe/edit-freezbe.compon
 import { HomeComponent } from './home/home.component';
 import { AddIngredientsComponent } from './Ingredients/add-ingredients/add-ingredients.component';
 import { EditIngredientsComponent } from './Ingredients/edit-ingredients/edit-ingredients.component';
+import { LoginComponent } from './login/login.component';
 import { AddProcessComponent } from './Process/add-process/add-process.component';
 import { EditProcessComponent } from './Process/edit-process/edit-process.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'Home', pathMatch: 'full'},
-  { path: 'Home', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent },
   
   { path: 'AddFreezbe', component: AddFreezbeComponent },
   { path: 'AddIngredients', component: AddIngredientsComponent},
@@ -18,7 +19,9 @@ const routes: Routes = [
   
   { path: 'EditFreezbe/:id', component: EditFreezbeComponent },
   { path: 'EditIngredients/:id', component: EditIngredientsComponent},
-  { path: "EditProcess/:id", component: EditProcessComponent}
+  { path: "EditProcess/:id", component: EditProcessComponent},
+
+  { path: 'login', component: LoginComponent}
 
 ];
 

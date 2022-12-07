@@ -30,7 +30,7 @@ export class AddFreezbeComponent {
         if (data != null) {
           this.toastr.success("Freezbe ajouté avec succès !");
           setTimeout(() => {
-            this.router.navigate(['/Home']);
+            this.router.navigate(['/home']);
           }, 500);
         }
       },
