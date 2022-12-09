@@ -52,7 +52,7 @@ export class WebApiService {
     return this.httpClient.post(
       url,
       model,
-      { responseType: 'text' })
+      httpOptions)
       .pipe(
         map((response: any) => this.ReturnResponseData(response)),
         catchError(this.handleError)

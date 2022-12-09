@@ -82,7 +82,8 @@ export class HomeViewFreezbeeComponent {
 
   deleteFreezbe(freezbe: any) {
     this.httpProvider.deleteFreezbeById(freezbe.id, localStorage.getItem('access_token')).subscribe((data : any) => {
-      if (data.rowsAffected >= 1) {
+      console.log(data);
+      if (data.status = 200) {
           this.toastr.success("Freezbe supprimé avec succès ! ");
           this.getAllFreezbe();
       }

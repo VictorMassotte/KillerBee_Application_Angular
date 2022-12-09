@@ -68,11 +68,11 @@
                 <label class="p-t-b-10">Ingrédients<span class="requiredStar">*</span></label>
               </div>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="Ingredients" required maxlength="10"
-                  [(ngModel)]="addFreezbeForm.ingredients" name="Ingredients" #Ingredients="ngModel">
-                <div *ngIf="Ingredients.errors && isSubmitted" class="alert alert-danger validationError">
-                    Ingrédients obligatoire !
-                </div>
+                <select class="form-control" id="Ingredients" required [(ngModel)]="addFreezbeForm.ingredients" name="Ingredients"
+                  #Ingredients="ngModel" data-live-search="true">
+                  <option *ngFor="let ingredient of ingredientList" [value]="ingredient.name">
+                    {{ingredient.name}}</option>
+                  </select>
               </div>
             </div>
             <div class="form-group p-10 row">

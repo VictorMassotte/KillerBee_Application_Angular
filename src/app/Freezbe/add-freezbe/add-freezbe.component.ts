@@ -17,9 +17,29 @@ export class AddFreezbeComponent {
 
   isSubmitted: boolean = false;
 
+  ingredientList: any = [];
+
   constructor(private router: Router, private httpProvider: HttpProviderService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.httpProvider.getAllIngredients(localStorage.getItem('access_token')).subscribe((data : any) => {
+      if (data != null && data.body != null) {
+        var resultData = data.body;
+        if (resultData) {
+          this.ingredientList = resultData;
+        }
+      }
+    },
+    (error : any)=> {
+        if (error) {
+          if (error.status == 404) {
+            if(error.error && error.error.message){
+              this.ingredientList = [];
+            }
+          }
+        }
+      });
+
   }
 
   AddFreezbe(isValid: any) {

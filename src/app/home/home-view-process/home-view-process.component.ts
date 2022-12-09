@@ -81,7 +81,7 @@ export class HomeViewProcessComponent {
 
   deleteProcess(process: any) {
     this.httpProvider.deleteProcessById(process.id, localStorage.getItem('access_token')).subscribe((data : any) => {
-        if (data.rowsAffected >= 1) {
+      if (data.status = 200) {
           this.toastr.success("Processus supprimé avec succès !");
           this.getAllProcess();
       }

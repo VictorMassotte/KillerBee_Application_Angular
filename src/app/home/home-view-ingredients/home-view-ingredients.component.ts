@@ -82,7 +82,7 @@ export class HomeViewIngredientsComponent {
 
   deleteIngredients(ingredients: any) {
     this.httpProvider.deleteIngredientsById(ingredients.id, localStorage.getItem('access_token')).subscribe((data : any) => {
-        if (data.rowsAffected >= 1) {
+      if (data.status = 200) {
           this.toastr.success("Ingrédient supprimé avec succès !");
           this.getAllIngredients();
       }

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environnements/environnement';
 import { WebApiService } from './web-api.service';
 
-var apiUrl = "http://localhost:3000/api/v1";
+var apiUrl = environment.domain;
 
 var httpLink = {
 

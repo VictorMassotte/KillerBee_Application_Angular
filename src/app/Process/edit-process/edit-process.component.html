@@ -68,7 +68,7 @@
                 <label class="p-t-b-10">Descriptions validations tests<span class="requiredStar">*</span></label>
               </div>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="Test" required maxlength="10"
+                <input type="text" class="form-control" id="Test" required
                   [(ngModel)]="editProcessForm.test" name="Test" #Test="ngModel">
                 <div *ngIf="Test.errors && isSubmitted" class="alert alert-danger validationError">
                     Test obligatoire !
